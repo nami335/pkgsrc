@@ -167,8 +167,8 @@ WRAPPER_${_wrappee_}=	${WRAPPER_BINDIR}/${${_wrappee_}}
 .endfor	# _WRAPPEES
 
 _WRAP_ALIASES.AS=	as
-_WRAP_ALIASES.CC=	cc gcc ada
-_WRAP_ALIASES.CXX=	c++ g++ CC cxx
+_WRAP_ALIASES.CC=	cc clang gcc ada
+_WRAP_ALIASES.CXX=	c++ clang++ g++ CC cxx
 _WRAP_ALIASES.CPP=	cpp
 _WRAP_ALIASES.FC=	f77 g77 gfortran
 _WRAP_ALIASES.IMAKE=	imake
@@ -499,7 +499,7 @@ ${_alias_}: ${_WRAP_COOKIE.${_wrappee_}}
 	wrapper="${WRAPPER_${_wrappee_}:C/^/_asdf_/1:M_asdf_*:S/^_asdf_//}"; \
 	if [ ! -x ${.TARGET} -a -x $$wrapper ]; then			\
 		${ECHO_BUILDLINK_MSG} "=> Linking ${_wrappee_} wrapper: ${.TARGET}"; \
-		${LN} -f${WRAPPER_USE_SYMLINK:Ds} $$wrapper ${.TARGET};	\
+		${LN} -fs${WRAPPER_USE_SYMLINK:Ds} $$wrapper ${.TARGET};	\
 	fi
 .    endif
 .  endfor
