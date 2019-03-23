@@ -13,6 +13,7 @@ LICENSE=	2-clause-bsd
 
 TEST_TARGET=		check
 GNU_CONFIGURE=		yes
+CPPFLAGS+=-I./contrib/android/include
 CONFIGURE_ARGS+=	--without-expat
 CONFIGURE_ARGS+=	--without-lzo2
 CONFIGURE_ARGS+=	--without-nettle

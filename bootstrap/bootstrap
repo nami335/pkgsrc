@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /data/data/com.termux/files/usr/bin/bash
 
 # $NetBSD: bootstrap,v 1.247 2018/02/03 09:53:03 bsiegert Exp $
 #
@@ -364,8 +364,11 @@ checkarg_sane_relative_path() {
 	*)	;;
 	esac
 }
-
-bootstrap_sh=${SH-/data/data/com.termux/files/usr/bin/bash}
+if [ "$HOME" = /data/data/com.termux/files/ ]; then
+bootstrap_sh=/data/data/com.termux/files/usr/bin/bash
+else
+bootstrap_sh=${SH-bin/bash}
+fi
 bootstrap_sh_set=${SH+set}
 
 case "$bootstrap_sh" in
