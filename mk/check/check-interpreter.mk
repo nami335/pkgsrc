@@ -70,7 +70,7 @@ _check-interpreter: error-check .PHONY
 		};							\
 		case "$$interp" in					\
 		"") continue;;						\
-		/bin/env|/usr/bin/env) if [ -x "$$file" ]; then		\
+		/bin/env|/usr/bin/env|${PREFIX}/bin/env) if [ -x "$$file" ]; then		\
 				${DELAYED_ERROR_MSG} "[check-interpreter.mk] The interpreter \"$$interp\" of \"${DESTDIR}${PREFIX}/$$file\" is not allowed."; \
 			else						\
 				${DELAYED_WARNING_MSG} "[check-interpreter.mk] The interpreter \"$$interp\" of \"${DESTDIR}${PREFIX}/$$file\" is not allowed."; \

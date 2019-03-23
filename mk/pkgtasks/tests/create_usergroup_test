@@ -153,7 +153,7 @@ PKG_USERS=		root:wheel
 PERL5=			perl
 PKGNAME=		test-pkg
 SETENV=			env
-SH=			/bin/sh
+SH=			${PREFIX}/bin/sh
 PKG_REFCOUNT_DBDIR=	${.CURDIR}/refcount
 EOF
 	${MAKE} PKGSRCDIR="${PKGSRCDIR}" ||

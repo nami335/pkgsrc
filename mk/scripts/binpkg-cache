@@ -41,7 +41,7 @@
 #
 
 
-TMPDIR=${TMPDIR:-/tmp}
+TMPDIR=${TMPDIR:-${PREFIX}/tmp}
 PACKAGES=${PACKAGES:-/usr/pkgsrc/packages/}
 AWK=${AWK:-awk}
 CMP=${CMP:-cmp}

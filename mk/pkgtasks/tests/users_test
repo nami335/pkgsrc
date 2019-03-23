@@ -82,7 +82,7 @@ USERGROUP_PHASE=	configure
 PKG_USERS=		u1:g1 u2:g2 u3:g3
 PKG_GECOS.u3=		test user u1 description
 
-SH=		/bin/sh
+SH=		${PREFIX}/bin/sh
 _GETUID_CMD=	${SH} getuid.sh
 EOF
 	# Expected output is each user:group inserted into the

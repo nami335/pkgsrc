@@ -5,7 +5,10 @@
 
 PKGREVISION=	2
 COMMENT=	Practical Extraction and Report Language
-
+LDFLAGS+=-L/system/lib/
+LDFLAGS+=-L/system/lib64/
+LDFLAGS+=-L/data/data/com.termux/files/usr/lib
+LDFLAGS+=-lm
 CONFLICTS+=	perl-base-[0-9]* perl-thread-[0-9]*
 
 # CONFLICTS packages older than CORE modules version.
@@ -119,7 +122,7 @@ PERL5_API_VERS_cmd=	\
 HAS_CONFIGURE=		yes
 CONFIGURE_SCRIPT=	./Configure
 CONFIGURE_ARGS+=	-sde
-CONFIGURE_ARGS+=	-Dldflags=${LDFLAGS:Q}
+CONFIGURE_ARGS+=	-Dldflags=${LDFLAGS:Q} LDFLAGS='${LDFLAGS} -L/data/data/com.termux/files/usr/lib -L/data/data/com.termux/files/usr/pkg/lib'
 MAKE_ENV+=		LC_ALL="C"
 
 .if ${OPSYS} == "SunOS"
