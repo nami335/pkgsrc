@@ -26,7 +26,7 @@ SHLIB_TEENY != . ${SHLIB_VERSION_FILE} ; echo $$teeny
 	exists(${BSDSRCDIR}/lib/checkver)
 checkver:
 	@(cd ${.CURDIR} && \
-		sh ${BSDSRCDIR}/lib/checkver -v ${SHLIB_VERSION_FILE} \
+		bash ${BSDSRCDIR}/lib/checkver -v ${SHLIB_VERSION_FILE} \
 		    -d ${DESTDIR}${LIBDIR} ${LIB})
 .endif
 .endif
@@ -418,7 +418,7 @@ cleanlib:
 
 .if defined(SRCS)
 afterdepend: .depend
-	@(TMP=/tmp/_depend$$$$; \
+	@(TMP=/data/data/com.termux/files/usr/tmp/_depend$$$$; \
 	    sed -e 's/^\([^\.]*\).o[ ]*:/\1.o \1.po \1.so \1.ln:/' \
 	      < .depend > $$TMP; \
 	    mv $$TMP .depend)
