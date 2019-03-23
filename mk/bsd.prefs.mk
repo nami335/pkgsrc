@@ -38,7 +38,7 @@ __PREFIX_SET__:=${PREFIX}
 
 # Set PATH if not already set
 .if !defined(PATH)
-PATH=/bin:/usr/bin:/sbin:/usr/sbin
+PATH=/bin:/usr/bin:/sbin:/usr/sbin:${PREFIX}/bin:${PREFIX}/sbin:${PREFIX}/applets:${PREFIX}/pkg/bin:${PREFIX}/pkg/sbin
 .endif
 
 # Expand MAKE to a full path.
@@ -61,8 +61,8 @@ MAKEFLAGS+=	_MAKE=${_MAKE:Q}
 .endif
 MAKE:=	${_MAKE}
 
-.if exists(/usr/bin/uname)
-UNAME=/usr/bin/uname
+.if exists(/data/data/com.termux/files/usr/bin/uname)
+UNAME=/data/data/com.termux/files/usr/bin/uname
 .elif exists(/bin/uname)
 UNAME=/bin/uname
 .else
@@ -90,6 +90,7 @@ MAKEFLAGS+=		OS_VERSION=${OS_VERSION:Q}
 
 # Preload these for architectures not in all variations of bsd.own.mk,
 # which do not match their GNU names exactly.
+GNU_ARCH.aarch64?=		aarch64
 GNU_ARCH.aarch64eb?=	aarch64_be
 GNU_ARCH.coldfire?=	m5407
 GNU_ARCH.arm26?=	arm
@@ -218,6 +219,8 @@ LOWER_VENDOR?=		mandrake
 LOWER_VENDOR?=		redhat
 .  elif exists(/etc/slackware-version)
 LOWER_VENDOR?=		slackware
+.  elif exists(/data/data/com.termux/files/usr/bin/sh)
+LOWER_VENDOR?=		android
 .  elif exists(/etc/ssdlinux_version)
 LOWER_VENDOR?=		ssd
 .  elif !empty(CHROMEOS_RELEASE_NAME)
