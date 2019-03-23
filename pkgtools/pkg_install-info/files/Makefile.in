@@ -3,7 +3,7 @@
 .if defined(PREFIX)
 BINDIR?=	${PREFIX}/bin
 .else
-BINDIR?=	/usr/bin
+BINDIR?=	${PREFIX}/bin
 .endif
 
 PROG=	pkg_install-info
