@@ -2,7 +2,12 @@
 # Working around that might lead to unforeseen side effects due to use of soft-links.
 # Moving the pkgrc source code to an ext4 sdcard would be needed and i'd say a wise move,
 # some applications try to hardlink during compile.
-
+#
+# It was the case that the Termux shell barfed and forgot it's env. I've added 
+# "set -a" to mk/configure/configure.mk over the old pkgsrc-termux along with 
+# invoking the autoconf command to configure for Termux and hopefully work 
+# around the loss of env.
+#
 # pkgsrc will vary in configuration and dependencies. 
 # But, as far as the base system:
 pkg install autoconf automake bison bzip2 clang cmake \
