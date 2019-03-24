@@ -5,7 +5,9 @@
 
 # pkgsrc will vary in configuration and dependencies. 
 # But, as far as the base system:
-# apt install coreutils, clang xargs x11-repo openbox pypanel xorg-xsetroot
+pkg install autoconf automake bison bzip2 clang cmake \
+coreutils diffutils flex gawk git grep gzip libtool make patch perl  \
+sed silversearcher-ag tar wget pkg-configcoreutils clang xargs x11-repo openbox pypanel xorg-xsetroot
 ## 
 # https://wiki.termux.com/wiki/Package_Management - read the section on xeffyr's xorg , currently: 
 # Xeffyr's Termux repository hosts X/GUI packages like openbox, dosbox, qemu-system or tigervnc.
