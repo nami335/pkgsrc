@@ -9,7 +9,19 @@ pkg install autoconf automake bison bzip2 clang cmake \
 coreutils diffutils flex gawk git grep gzip libtool make patch perl  \
 sed silversearcher-ag tar wget pkg-configcoreutils clang xargs x11-repo openbox pypanel xorg-xsetroot
 #
-# https://wiki.termux.com/wiki/Package_Management - is worth a read.
+# https://wiki.termux.com/wiki/Package_Management - Is worth a read.
+#
+# We need to set some variables, i use a startx-openbox.sh along with XServer XSDL, example:  
+SHELL=/data/data/com.termux/files/usr/bin/bash; export SHELL;
+CCACHE_DIR=/data/data/com.termux/files/home/.ccache; export CCHACHE_DIR;
+export CONFIG_SHELL=/data/data/com.termux/files/usr/bin/bash
+export X_CFLAGS="-I/data/data/com.termux/files/usr/include -D_REENTRANT"
+export X_LIBS="-Wl,-R/data/data/com.termux/files/usr/lib -lX11"
+# Add PATH to bashrc . see etc/bash.bashrc 
+# wiki.termux.com/wiki/Shells  
+export DISPLAY=localhost:0
+export PULSE_SERVER=localhost:4712
+$SHELL -c "openbox-session &"
 #
 # lang/Perl5:
 # Asks where the C Library is: /data/data/com.termux/files/usr/lib
@@ -27,21 +39,6 @@ sed silversearcher-ag tar wget pkg-configcoreutils clang xargs x11-repo openbox 
 # missing include <locale.h> in gettext.xs
 # 
 #  LC_ALL="" LC_COLLATE="" LC_MONETARY="" LC_NUMERIC="" LC_MESSAGES="" 
-# Use the following instructions to enable repository in sources.list file:
-#
-# Issues related to this repository/packages could be posted here: https://github.com/xeffyr/termux-x-repository/issues 
-#--
-# i use a startx.sh along with XServer XSDL, example:  
-SHELL=/data/data/com.termux/files/usr/bin/bash; export SHELL;
-CCACHE_DIR=/data/data/com.termux/files/home/.ccache; export CCHACHE_DIR;
-export CONFIG_SHELL=/data/data/com.termux/files/usr/bin/bash
-export X_CFLAGS="-I/data/data/com.termux/files/usr/include -D_REENTRANT"
-export X_LIBS="-Wl,-R/data/data/com.termux/files/usr/lib -lX11"
-# Add PATH to bashrc . see etc/bash.bashrc 
-# wiki.termux.com/wiki/Shells  
-export DISPLAY=localhost:0
-export PULSE_SERVER=localhost:4712
-$SHELL -c "openbox-session &"
 #
 # termux-elf-cleaner - android-elf-cleaner # outdated?
 #
