@@ -43,9 +43,8 @@ export DISPLAY=localhost:0
 export PULSE_SERVER=localhost:4712
 $SHELL -c "openbox-session &"
 #
+# termux-elf-cleaner - android-elf-cleaner # outdated?
 #
-#
-# termux-elf-cleaner - android-elf-cleaner
 # Beware of the TMPDIR=/tmp and :sh 
 cd bootstrap &&  CCACHE_DIR=/data/data/com.termux/files/home/.ccache; export CCHACHE_DIR; ./testbootstrap &&
 
