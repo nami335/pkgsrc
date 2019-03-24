@@ -1,8 +1,7 @@
 # A few of the problems identified with this approach include a rather serious non working hardlinks.
-# Working around that leads to unforeseen side effects due to use of soft-links.
+# Working around that might lead to unforeseen side effects due to use of soft-links.
 # Moving pkgrc-termux to an ext4 sdcard would be needed and i'd say a wise move,
 # some applications try to hardlink during compile.
-
 
 # pkgsrc will vary in configuration and dependencies. 
 # But, as far as the base system:
@@ -11,7 +10,7 @@ coreutils diffutils flex gawk git grep gzip libtool make patch perl  \
 sed silversearcher-ag tar wget pkg-configcoreutils clang xargs x11-repo openbox pypanel xorg-xsetroot
 #
 # https://wiki.termux.com/wiki/Package_Management - is worth a read.
-##
+#
 # lang/Perl5:
 # Asks where the C Library is: /data/data/com.termux/files/usr/lib
 # chmod 755 usr/pkg/bin/perl 
