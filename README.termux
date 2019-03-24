@@ -1,6 +1,6 @@
 # A few of the problems identified with this approach include a rather serious non working hardlinks.
 # Working around that might lead to unforeseen side effects due to use of soft-links.
-# Moving pkgrc-termux to an ext4 sdcard would be needed and i'd say a wise move,
+# Moving the pkgrc source code to an ext4 sdcard would be needed and i'd say a wise move,
 # some applications try to hardlink during compile.
 
 # pkgsrc will vary in configuration and dependencies. 
