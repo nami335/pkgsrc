@@ -18,11 +18,11 @@ pkg install autoconf automake bison bzip2 clang cmake \
 coreutils diffutils flex gawk git grep gzip libtool make patch perl  \
 sed silversearcher-ag tar wget pkg-configcoreutils clang xargs x11-repo openbox pypanel xorg-xsetroot
 #
+# Build:
 # https://wiki.termux.com/wiki/Package_Management - Is worth a read.
 #
 # We need to set some variables, i use a startx-openbox.sh along with XServer XSDL, example:  
 ##
-# Build:
 SHELL=/data/data/com.termux/files/usr/bin/bash; export SHELL;
 CCACHE_DIR=/data/data/com.termux/files/home/.ccache; export CCHACHE_DIR;
 export CONFIG_SHELL=/data/data/com.termux/files/usr/bin/bash
@@ -66,5 +66,5 @@ cd bootstrap &&
 #
 # termux-elf-cleaner - android-elf-cleaner # outdated?
 #
-# Beware of the TMPDIR=/tmp and :sh 
+# Beware of the TMPDIR=/tmp and :sh everywhere in all the source code. 
 
