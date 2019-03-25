@@ -1,3 +1,5 @@
+# The source is adjusted to build with clang. 
+#
 # A few of the problems identified with this approach include a rather serious non working hardlinks.
 # Working around that might lead to unforeseen side effects due to use of soft-links.
 # Moving the pkgrc source code to an ext4 sdcard would be needed and i'd say a wise move,
