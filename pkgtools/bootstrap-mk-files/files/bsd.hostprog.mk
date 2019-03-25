@@ -17,43 +17,43 @@ clean cleandir: cleanprog
 
 CFLAGS+=	${COPTS}
 
-LIBBZ2?=	/data/data/com.termux/files/usr/lib/libbz2.a
-LIBC?=		/data/data/com.termux/files/usr/lib/libc.a
-LIBC_PIC?=	/data/data/com.termux/files/usr/lib/libc_pic.a
-LIBCDK?=	/data/data/com.termux/files/usr/lib/libcdk.a
-LIBCOMPAT?=	/data/data/com.termux/files/usr/lib/libcompat.a
-LIBCRYPT?=	/data/data/com.termux/files/usr/lib/libcrypt.a
-LIBCURSES?=	/data/data/com.termux/files/usr/lib/libcurses.a
-LIBDBM?=	/data/data/com.termux/files/usr/lib/libdbm.a
-LIBDES?=	/data/data/com.termux/files/usr/lib/libdes.a
-LIBEDIT?=	/data/data/com.termux/files/usr/lib/libedit.a
-LIBFORM?=	/data/data/com.termux/files/usr/lib/libform.a
-LIBGCC?=	/data/data/com.termux/files/usr/lib/libgcc.a
-LIBGNUMALLOC?=	/data/data/com.termux/files/usr/lib/libgnumalloc.a
-LIBINTL?=	/data/data/com.termux/files/usr/lib/libintl.a
-LIBIPSEC?=	/data/data/com.termux/files/usr/lib/libipsec.a
-LIBKDB?=	/data/data/com.termux/files/usr/lib/libkdb.a
-LIBKRB?=	/data/data/com.termux/files/usr/lib/libkrb.a
-LIBKVM?=	/data/data/com.termux/files/usr/lib/libkvm.a
-LIBL?=		/data/data/com.termux/files/usr/lib/libl.a
-LIBM?=		/data/data/com.termux/files/usr/lib/libm.a
-LIBMENU?=	/data/data/com.termux/files/usr/lib/libmenu.a
-LIBMP?=		/data/data/com.termux/files/usr/lib/libmp.a
-LIBNTP?=	/data/data/com.termux/files/usr/lib/libntp.a
-LIBOBJC?=	/data/data/com.termux/files/usr/lib/libobjc.a
-LIBPC?=		/data/data/com.termux/files/usr/lib/libpc.a
-LIBPCAP?=	/data/data/com.termux/files/usr/lib/libpcap.a
-LIBPLOT?=	/data/data/com.termux/files/usr/lib/libplot.a
-LIBPOSIX?=	/data/data/com.termux/files/usr/lib/libposix.a
-LIBRESOLV?=	/data/data/com.termux/files/usr/lib/libresolv.a
-LIBRPCSVC?=	/data/data/com.termux/files/usr/lib/librpcsvc.a
-LIBSKEY?=	/data/data/com.termux/files/usr/lib/libskey.a
-LIBTERMCAP?=	/data/data/com.termux/files/usr/lib/libtermcap.a
-LIBTELNET?=	/data/data/com.termux/files/usr/lib/libtelnet.a
-LIBUTIL?=	/data/data/com.termux/files/usr/lib/libutil.a
-LIBWRAP?=	/data/data/com.termux/files/usr/lib/libwrap.a
-LIBY?=		/data/data/com.termux/files/usr/lib/liby.a
-LIBZ?=		/data/data/com.termux/files/usr/lib/libz.a
+LIBBZ2?=	${PREFIX}/lib/libbz2.a
+LIBC?=		${PREFIX}/lib/libc.a
+LIBC_PIC?=	${PREFIX}/lib/libc_pic.a
+LIBCDK?=	${PREFIX}/lib/libcdk.a
+LIBCOMPAT?=	${PREFIX}/lib/libcompat.a
+LIBCRYPT?=	${PREFIX}/lib/libcrypt.a
+LIBCURSES?=	${PREFIX}/lib/libcurses.a
+LIBDBM?=	${PREFIX}/lib/libdbm.a
+LIBDES?=	${PREFIX}/lib/libdes.a
+LIBEDIT?=	${PREFIX}/lib/libedit.a
+LIBFORM?=	${PREFIX}/lib/libform.a
+LIBGCC?=	${PREFIX}/lib/libgcc.a
+LIBGNUMALLOC?=	${PREFIX}/lib/libgnumalloc.a
+LIBINTL?=	${PREFIX}/lib/libintl.a
+LIBIPSEC?=	${PREFIX}/lib/libipsec.a
+LIBKDB?=	${PREFIX}/lib/libkdb.a
+LIBKRB?=	${PREFIX}/lib/libkrb.a
+LIBKVM?=	${PREFIX}/lib/libkvm.a
+LIBL?=		${PREFIX}/lib/libl.a
+LIBM?=		${PREFIX}/lib/libm.a
+LIBMENU?=	${PREFIX}/lib/libmenu.a
+LIBMP?=		${PREFIX}/lib/libmp.a
+LIBNTP?=	${PREFIX}/lib/libntp.a
+LIBOBJC?=	${PREFIX}/lib/libobjc.a
+LIBPC?=		${PREFIX}/lib/libpc.a
+LIBPCAP?=	${PREFIX}/lib/libpcap.a
+LIBPLOT?=	${PREFIX}/lib/libplot.a
+LIBPOSIX?=	${PREFIX}/lib/libposix.a
+LIBRESOLV?=	${PREFIX}/lib/libresolv.a
+LIBRPCSVC?=	${PREFIX}/lib/librpcsvc.a
+LIBSKEY?=	${PREFIX}/lib/libskey.a
+LIBTERMCAP?=	${PREFIX}/lib/libtermcap.a
+LIBTELNET?=	${PREFIX}/lib/libtelnet.a
+LIBUTIL?=	${PREFIX}/lib/libutil.a
+LIBWRAP?=	${PREFIX}/lib/libwrap.a
+LIBY?=		${PREFIX}/lib/liby.a
+LIBZ?=		${PREFIX}/lib/libz.a
 
 .if defined(SHAREDSTRINGS)
 CLEANFILES+=strings
@@ -114,7 +114,7 @@ CPPFLAGS=	${HOST_CPPFLAGS}
 
 .if defined(SRCS)
 afterdepend: .depend
-	@(TMP=/data/data/com.termux/files/usr/tmp/_depend$$$$; \
+	@(TMP=${PREFIX}/tmp/_depend$$$$; \
 	    sed -e 's/^\([^\.]*\).o[ ]*:/\1.lo \1.ln:/' \
 	      < .depend > $$TMP; \
 	    mv $$TMP .depend)

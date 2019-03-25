@@ -28,15 +28,15 @@
 
 .include "misc/common.mk"
 
-AWK?=		/data/data/com.termux/files/usr/bin/awk
-CAT?=		/data/data/com.termux/files/usr/bin/cat
-BASENAME?=	/data/data/com.termux/files/usr/bin/basename
+AWK?=		${PREFIX}/bin/awk
+CAT?=		${PREFIX}bin/cat
+BASENAME?=	${PREFIX}/bin/basename
 ECHO?=		echo
 ECHO_MSG?=	${ECHO}
-MV?=		/data/data/com.termux/files/usr/bin/mv
-RM?=		/data/data/com.termux/files/usr/bin/rm
-SED?=		/data/data/com.termux/files/usr/usr/bin/sed
-SORT?=		/data/data/com.termux/files/usr/bin/sort
+MV?=		${PREFIX}/bin/mv
+RM?=		${PREFIX}/bin/rm
+SED?=		${PREFIX}/usr/bin/sed
+SORT?=		${PREFIX}/bin/sort
 
 _SUBDIRUSE: .USE
 	@for entry in "" ${SUBDIR}; do \
@@ -153,7 +153,7 @@ show-subdir-var:
 .PHONY: fetch-list
 
 fetch-list:
-	@${ECHO} '#!/data/data/com.termux/files/usr/bin/bash'
+	@${ECHO} '#!${PREFIX}/bin/bash'
 	@${ECHO} '#'
 	@${ECHO} '# This is an auto-generated script, the result of running'
 	@${ECHO} '# `make fetch-list'"'"' in directory "'"`${PWD_CMD}`"'"'

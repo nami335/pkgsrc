@@ -45,7 +45,7 @@ __usrobjdirpf=
 .endif
 .endif
 
-PAWD?=		/data/data/com.termux/files/usr/bin/pwd
+PAWD?=		${PREFIX}/bin/pwd
 
 obj:
 	@cd ${.CURDIR}; \

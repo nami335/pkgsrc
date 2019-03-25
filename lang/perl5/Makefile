@@ -7,7 +7,7 @@ PKGREVISION=	2
 COMMENT=	Practical Extraction and Report Language
 LDFLAGS+=-L/system/lib/
 LDFLAGS+=-L/system/lib64/
-LDFLAGS+=-L/data/data/com.termux/files/usr/lib
+LDFLAGS+=-L${PREFIX}/lib
 LDFLAGS+=-lm
 CONFLICTS+=	perl-base-[0-9]* perl-thread-[0-9]*
 

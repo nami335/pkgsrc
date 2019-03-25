@@ -40,7 +40,7 @@
 #
 
 REV=`echo '$Revision: 1.37 $' | sed 's/\\$//g'`
-tmpdir=/data/data/com.termux/files/usr/tmp
+tmpdir=${PREFIX}/tmp
 spacesintab=8
 makefile=Makefile
 sedrules=$tmpdir/sedrules.buildlink.$$

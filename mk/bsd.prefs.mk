@@ -61,8 +61,8 @@ MAKEFLAGS+=	_MAKE=${_MAKE:Q}
 .endif
 MAKE:=	${_MAKE}
 
-.if exists(/data/data/com.termux/files/usr/bin/uname)
-UNAME=/data/data/com.termux/files/usr/bin/uname
+.if exists(${PREFIX}/bin/uname)
+UNAME=${PREFIX}/bin/uname
 .elif exists(/bin/uname)
 UNAME=/bin/uname
 .else
@@ -220,6 +220,8 @@ LOWER_VENDOR?=		redhat
 .  elif exists(/etc/slackware-version)
 LOWER_VENDOR?=		slackware
 .  elif exists(/data/data/com.termux/files/usr/bin/sh)
+LOWER_VENDOR?=		android
+.  elif exists(/system/bin/sh)
 LOWER_VENDOR?=		android
 .  elif exists(/etc/ssdlinux_version)
 LOWER_VENDOR?=		ssd

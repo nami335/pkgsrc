@@ -28,40 +28,40 @@ NONBINMODE?=	444
 # Define MANZ to have the man pages compressed (gzip)
 #MANZ=		1
 
-MANDIR?=	/data/data/com.termux/files/usr/share/man
+MANDIR?=	${PREFIX}/share/man
 MANGRP?=	@ROOT_GROUP@
 MANOWN?=	@ROOT_USER@
 MANMODE?=	${NONBINMODE}
 MANINSTALL?=	${_MANINSTALL}
 
-INFODIR?=	/data/data/com.termux/files/usr/share/info
+INFODIR?=	${PREFIX}/share/info
 INFOGRP?=	@ROOT_GROUP@
 INFOOWN?=	@ROOT_USER@
 INFOMODE?=	${NONBINMODE}
 
-LIBDIR?=	/data/data/com.termux/files/usr/lib
-LINTLIBDIR?=	/data/data/com.termux/files/usr/libdata/lint
+LIBDIR?=	${PREFIX}/lib
+LINTLIBDIR?=	${PREFIX}/libdata/lint
 LIBGRP?=	${BINGRP}
 LIBOWN?=	${BINOWN}
 LIBMODE?=	${NONBINMODE}
 
-DOCDIR?=	/data/data/com.termux/files/usr/share/doc
-HTMLDOCDIR?=	/data/data/com.termux/files/usr/share/doc/html
+DOCDIR?=	${PREFIX}/share/doc
+HTMLDOCDIR?=	${PREFIX}/share/doc/html
 DOCGRP?=	@ROOT_GROUP@
 DOCOWN?=	@ROOT_USER@
 DOCMODE?=	${NONBINMODE}
 
-NLSDIR?=	/data/data/com.termux/files/usr/share/nls
+NLSDIR?=	${PREFIX}/share/nls
 NLSGRP?=	@ROOT_GROUP@
 NLSOWN?=	@ROOT_USER@
 NLSMODE?=	${NONBINMODE}
 
-KMODDIR?=	/data/data/com.termux/files/usr/lkm
+KMODDIR?=	${PREFIX}/lkm
 KMODGRP?=	@ROOT_GROUP@
 KMODOWN?=	@ROOT_USER@
 KMODMODE?=	${NONBINMODE}
 
-LOCALEDIR?=	/data/data/com.termux/files/usr/share/locale
+LOCALEDIR?=	${PREFIX}/share/locale
 LOCALEGRP?=	@ROOT_GROUP@
 LOCALEOWN?=	@ROOT_USER@
 LOCALEMODE?=	${NONBINMODE}
