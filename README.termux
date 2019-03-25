@@ -3,7 +3,7 @@
 # A few of the problems identified:
 # A rather serious non working hardlinks in the Android /data/data/ fs. 
 # Working around this might lead to unforeseen side effects due to forcing 
-the use of soft-links.Moving the pkgrc source code to an ext4 sdcard would
+# the use of soft-links. Moving the pkgrc source code to an ext4 sdcard would
 # be needed, some applications will hardlink during compile.
 #
 # It was the case that the Termux shell barfed and forgot It's env. I've added 
@@ -12,7 +12,7 @@ the use of soft-links.Moving the pkgrc source code to an ext4 sdcard would
 # around the loss of env.
 #
 # Dependencies:
-# pkgsrc will vary in configuration and dependencies. 
+# pkgsrc will vary in dependencies depending on configuration selected. 
 # But, as far as the base system:
 pkg install autoconf automake bison bzip2 clang cmake \
 coreutils diffutils flex gawk git grep gzip libtool make patch perl  \
