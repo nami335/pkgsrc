@@ -89,8 +89,8 @@ _OPSYS_LIB_DIRS?=	/lib /system/lib /system/lib${LIBABISUFFIX} ${PREFIX}/lib${LIB
 .  endif
 .  if !empty(MACHINE_ARCH:Maarch64)
 LIBABISUFFIX?=		/aarch64-linux-android
-_OPSYS_SYSTEM_RPATH=	/lib:/system/lib:/system/lib${LIBABISUFFIX}:${PREFIX}/lib:${PREFIX}/lib${LIBABISUFFIX}:${PREFIX}/lib/aarch64-linux-androideabi
-_OPSYS_LIB_DIRS?=	/lib /system/lib /system/lib${LIBABISUFFIX} ${PREFIX}/lib ${PREFIX}/lib${LIBABISUFFIX} ${PREFIX}/lib/aarch64-linux-androideabi
+_OPSYS_SYSTEM_RPATH=	/lib:${PREFIX}/lib:${PREFIX}/lib${LIBABISUFFIX}:/system/lib:/system/lib${LIBABISUFFIX}:${PREFIX}/lib/aarch64-linux-androideabi
+_OPSYS_LIB_DIRS?=	/lib ${PREFIX}/lib ${PREFIX}/lib${LIBABISUFFIX}  /system/lib /system/lib${LIBABISUFFIX} ${PREFIX}/lib/aarch64-linux-androideabi
 .  endif
 .  if !empty(MACHINE_ARCH:Mpowerpc64le)
 LIBABISUFFIX?=		/powerpc64le-linux-gnu
@@ -98,10 +98,10 @@ _OPSYS_SYSTEM_RPATH=	/lib:/usr/lib:/lib${LIBABISUFFIX}:/usr/lib${LIBABISUFFIX}
 _OPSYS_LIB_DIRS?=	/lib /usr/lib /lib${LIBABISUFFIX} /usr/lib${LIBABISUFFIX}
 .  endif
 .else
-_OPSYS_SYSTEM_RPATH=	/lib:/system/lib:/system/lib${LIBABISUFFIX}:/lib${LIBABISUFFIX}:/usr/lib${LIBABISUFFIX}:${PREFIX}/lib:${PREFIX}/lib${LIBABISUFFIX}
-_OPSYS_LIB_DIRS?=	/lib /system/lib /system/lib${LIBABISUFFIX} /lib${LIBABISUFFIX} /usr/lib${LIBABISUFFIX} ${PREFIX}/lib ${PREFIX}/lib${LIBABISUFFIX}
+_OPSYS_SYSTEM_RPATH=	/lib:/lib${LIBABISUFFIX}:${PREFIX}/lib:${PREFIX}/lib${LIBABISUFFIX}:/system/lib:/system/lib${LIBABISUFFIX}:
+_OPSYS_LIB_DIRS?=	/lib /lib${LIBABISUFFIX} ${PREFIX}/lib ${PREFIX}/lib${LIBABISUFFIX} /system/lib /system/lib${LIBABISUFFIX} 
 .endif
-_OPSYS_INCLUDE_DIRS?=	${PREFIX}/include ${PREFIX}/include
+_OPSYS_INCLUDE_DIRS?=	${PREFIX}/include
 
 .if !empty(OS_VARIANT:Mchromeos)
 _OPSYS_LIB_DIRS+=	/usr/local/lib
