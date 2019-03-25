@@ -12,10 +12,10 @@ PKGLOCALEDIR?=	share
 PS?=		${PREFIX}/bin/applets/ps
 # XXX: default from defaults/mk.conf.  Verify/correct for this platform
 # and remove this comment.
-.if exists(/data/data/com.termux/files/usr/bin/su)
-SU?=		/data/data/com.termux/files/usr/bin/su
+.if exists(${PREFIX}/bin/su)
+SU?=		${PREFIX}/bin/su
 .else
-SU?=		/data/data/com.termux/files/bin/su
+SU?=		${PREFIX}/bin/su
 .endif
 TYPE?=		type			# Shell builtin
 
@@ -25,8 +25,8 @@ DEFAULT_SERIAL_DEVICE?=	/dev/null
 EXPORT_SYMBOLS_LDFLAGS?=	# Don't add symbols to the dynamic symbol table
 GROUPADD?=		${PREFIX}/sbin/groupadd
 MOTIF_TYPE_DEFAULT?=	motif	# default 2.0 compatible libs type
-.if exists(/data/data/com.termux/files/etc/ssdlinux_version)
-NOLOGIN?=		/data/data/com.termux/files/sbin/nologin
+.if exists(${PREFIX}/etc/ssdlinux_version)
+NOLOGIN?=		${PREFIX}/sbin/nologin
 .else
 NOLOGIN?=		${PREFIX}/bin/false
 .endif
@@ -79,18 +79,18 @@ _OPSYS_SYSTEM_RPATH=	/lib${LIBABISUFFIX}:/usr/lib${LIBABISUFFIX}:/lib/i386-linux
 _OPSYS_LIB_DIRS?=	/lib${LIBABISUFFIX} /usr/lib${LIBABISUFFIX} /lib/i386-linux-gnu /usr/lib/i386-linux-gnu
 .  endif
 .  if !empty(MACHINE_ARCH:Marm*)
-.    if exists(/data/data/com.termux/files/usr/etc/ld.so.conf.d/arm-linux-gnueabihf.conf)
-_OPSYS_SYSTEM_RPATH=	/data/data/com.termux/files/usr/lib:/data/data/com.termux/files/usr/arm-linux-androideabihf:${PREFIX}/lib${LIBABISUFFIX}
-_OPSYS_LIB_DIRS?=	/data/data/com.termux/files/usr${LIBABISUFFIX} /data/data/com.termux/files/usr/lib${LIBABISUFFIX} /data/data/com.termux/files/usr/arm-linux-androideabihf ${PREFIX}/lib${LIBABISUFFIX}
+.    if exists(${PREFIX}/etc/ld.so.conf.d/arm-linux-gnueabihf.conf)
+_OPSYS_SYSTEM_RPATH=	${PREFIX}/lib:${PREFIX}/lib/arm-linux-androideabihf:${PREFIX}/lib${LIBABISUFFIX}
+_OPSYS_LIB_DIRS?=	${PREFIX}/lib${LIBABISUFFIX} ${PREFIX}/lib/arm-linux-androideabihf ${PREFIX}/lib${LIBABISUFFIX}
 .    else
-_OPSYS_SYSTEM_RPATH=	/data/data/com.termux/files/usr/lib:/data/data/com.termux/files/usr/lib${LIBABISUFFIX}:/data/data/com.termux/files/usr/arm-linux-androideabi:${PREFIX}/lib${LIBABISUFFIX}
-_OPSYS_LIB_DIRS?=	/data/data/com.termux/files/usr/lib${LIBABISUFFIX} /data/data/com.termux/files/usr/arm-linux-androideabi ${PREFIX}/lib${LIBABISUFFIX}
+_OPSYS_SYSTEM_RPATH=	/lib:/system/lib:/system/lib${LIBABISUFFIX}:${PREFIX}/lib:${PREFIX}/lib${LIBABISUFFIX}:${PREFIX}/lib/arm-linux-androideabi:${PREFIX}/lib${LIBABISUFFIX}
+_OPSYS_LIB_DIRS?=	/lib /system/lib /system/lib${LIBABISUFFIX} ${PREFIX}/lib${LIBABISUFFIX} ${PREFIX}/lib/arm-linux-androideabi ${PREFIX}/lib${LIBABISUFFIX}
 .    endif
 .  endif
 .  if !empty(MACHINE_ARCH:Maarch64)
 LIBABISUFFIX?=		/aarch64-linux-android
-_OPSYS_SYSTEM_RPATH=	/data/data/com.termux/files/usr/lib:/data/data/com.termux/files/usr/lib${LIBABISUFFIX}:/data/data/com.termux/files/usr/aarch64-linux-androideabi:${PREFIX}/lib${LIBABISUFFIX}
-_OPSYS_LIB_DIRS?=	/data/data/com.termux/files/usr/lib /data/data/com.termux/files/usr/lib${LIBABISUFFIX} /data/data/com.termux/files/usr/aarch64-linux-androideabi ${PREFIX}/lib${LIBABISUFFIX}
+_OPSYS_SYSTEM_RPATH=	/lib:/system/lib:/system/lib${LIBABISUFFIX}:${PREFIX}/lib:${PREFIX}/lib${LIBABISUFFIX}:${PREFIX}/lib/aarch64-linux-androideabi
+_OPSYS_LIB_DIRS?=	/lib /system/lib /system/lib${LIBABISUFFIX} ${PREFIX}/lib ${PREFIX}/lib${LIBABISUFFIX} ${PREFIX}/lib/aarch64-linux-androideabi
 .  endif
 .  if !empty(MACHINE_ARCH:Mpowerpc64le)
 LIBABISUFFIX?=		/powerpc64le-linux-gnu
@@ -98,10 +98,10 @@ _OPSYS_SYSTEM_RPATH=	/lib:/usr/lib:/lib${LIBABISUFFIX}:/usr/lib${LIBABISUFFIX}
 _OPSYS_LIB_DIRS?=	/lib /usr/lib /lib${LIBABISUFFIX} /usr/lib${LIBABISUFFIX}
 .  endif
 .else
-_OPSYS_SYSTEM_RPATH=	/lib${LIBABISUFFIX}:/usr/lib${LIBABISUFFIX}:/data/data/com.termux/files/usr/lib:/data/data/com.termux/files/usr/lib${LIBABISUFFIX}:${PREFIX}/lib${LIBABISUFFIX}
-_OPSYS_LIB_DIRS?=	/lib${LIBABISUFFIX} /usr/lib${LIBABISUFFIX} /data/data/com.termux/files/usr/lib /data/data/com.termux/files/usr/lib${LIBABISUFFIX} ${PREFIX}/lib${LIBABISUFFIX}
+_OPSYS_SYSTEM_RPATH=	/lib:/system/lib:/system/lib${LIBABISUFFIX}:/lib${LIBABISUFFIX}:/usr/lib${LIBABISUFFIX}:${PREFIX}/lib:${PREFIX}/lib${LIBABISUFFIX}
+_OPSYS_LIB_DIRS?=	/lib /system/lib /system/lib${LIBABISUFFIX} /lib${LIBABISUFFIX} /usr/lib${LIBABISUFFIX} ${PREFIX}/lib ${PREFIX}/lib${LIBABISUFFIX}
 .endif
-_OPSYS_INCLUDE_DIRS?=	/data/data/com.termux/files/usr/include ${PREFIX}/include
+_OPSYS_INCLUDE_DIRS?=	${PREFIX}/include ${PREFIX}/include
 
 .if !empty(OS_VARIANT:Mchromeos)
 _OPSYS_LIB_DIRS+=	/usr/local/lib
