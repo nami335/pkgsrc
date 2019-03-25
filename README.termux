@@ -29,7 +29,7 @@ export DISPLAY=localhost:0
 export PULSE_SERVER=localhost:4712
 $SHELL -c "openbox-session &"
 ##
-# Then start the bootstrap process and build the base system, here using ccache. 
+# Then start the bootstrap process and build the base system. 
 cd bootstrap && 
 ./bootstrap \
 --workdir=/data/data/com.termux/files/home/dev/gnu/pkgsrc/pkgsrc/bootstrap/work \
