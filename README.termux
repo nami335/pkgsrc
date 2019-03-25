@@ -1,15 +1,17 @@
 # The source is adjusted to build with clang. 
 #
-# A few of the problems identified with this approach include a rather serious non working hardlinks.
-# Working around that might lead to unforeseen side effects due to use of soft-links.
-# Moving the pkgrc source code to an ext4 sdcard would be needed and i'd say a wise move,
-# some applications try to hardlink during compile.
+# A few of the problems identified:
+# A rather serious non working hardlinks in the Android /data/data/ fs. 
+# Working around this might lead to unforeseen side effects due to forcing 
+the use of soft-links.Moving the pkgrc source code to an ext4 sdcard would
+# be needed, some applications will hardlink during compile.
 #
 # It was the case that the Termux shell barfed and forgot It's env. I've added 
 # "set -a" to mk/configure/configure.mk over the old pkgsrc-termux along with 
 # invoking the autoconf command to configure for Termux and hopefully work 
 # around the loss of env.
 #
+# Dependencies:
 # pkgsrc will vary in configuration and dependencies. 
 # But, as far as the base system:
 pkg install autoconf automake bison bzip2 clang cmake \
@@ -20,6 +22,7 @@ sed silversearcher-ag tar wget pkg-configcoreutils clang xargs x11-repo openbox 
 #
 # We need to set some variables, i use a startx-openbox.sh along with XServer XSDL, example:  
 ##
+# Build:
 SHELL=/data/data/com.termux/files/usr/bin/bash; export SHELL;
 CCACHE_DIR=/data/data/com.termux/files/home/.ccache; export CCHACHE_DIR;
 export CONFIG_SHELL=/data/data/com.termux/files/usr/bin/bash
