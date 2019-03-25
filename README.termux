@@ -41,7 +41,7 @@ cd bootstrap &&  CCACHE_DIR=/data/data/com.termux/files/home/.ccache; export CCH
 --sysconfdir=/data/data/com.termux/files/usr/pkg/etc \
 --varbase=/data/data/com.termux/files/usr/var 
 #
-# Some libraries need to be input to continue.
+# Some library locations need to be input to continue.
 #
 # lang/Perl5:
 # Asks where the C Library is: /data/data/com.termux/files/usr/lib
