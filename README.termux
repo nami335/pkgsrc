@@ -3,7 +3,7 @@
 # Moving the pkgrc source code to an ext4 sdcard would be needed and i'd say a wise move,
 # some applications try to hardlink during compile.
 #
-# It was the case that the Termux shell barfed and forgot it's env. I've added 
+# It was the case that the Termux shell barfed and forgot It's env. I've added 
 # "set -a" to mk/configure/configure.mk over the old pkgsrc-termux along with 
 # invoking the autoconf command to configure for Termux and hopefully work 
 # around the loss of env.
@@ -17,6 +17,7 @@ sed silversearcher-ag tar wget pkg-configcoreutils clang xargs x11-repo openbox 
 # https://wiki.termux.com/wiki/Package_Management - Is worth a read.
 #
 # We need to set some variables, i use a startx-openbox.sh along with XServer XSDL, example:  
+##
 SHELL=/data/data/com.termux/files/usr/bin/bash; export SHELL;
 CCACHE_DIR=/data/data/com.termux/files/home/.ccache; export CCHACHE_DIR;
 export CONFIG_SHELL=/data/data/com.termux/files/usr/bin/bash
@@ -27,6 +28,20 @@ export X_LIBS="-Wl,-R/data/data/com.termux/files/usr/lib -lX11"
 export DISPLAY=localhost:0
 export PULSE_SERVER=localhost:4712
 $SHELL -c "openbox-session &"
+##
+# Then start the bootstrap process and build the base system, here using ccache. 
+cd bootstrap &&  CCACHE_DIR=/data/data/com.termux/files/home/.ccache; export CCHACHE_DIR; ./testbootstrap &&
+
+./bootstrap \
+--workdir=/data/data/com.termux/files/home/dev/gnu/pkgsrc/pkgsrc/bootstrap/work \
+--cwrappers=no \
+--unprivileged \
+--prefix=/data/data/com.termux/files/usr/pkg \
+--pkgdbdir=/data/data/com.termux/files/usr/pkg/pkgdb \ 
+--sysconfdir=/data/data/com.termux/files/usr/pkg/etc \
+--varbase=/data/data/com.termux/files/usr/var 
+#
+# Some libraries need to be input to continue.
 #
 # lang/Perl5:
 # Asks where the C Library is: /data/data/com.termux/files/usr/lib
@@ -48,13 +63,4 @@ $SHELL -c "openbox-session &"
 # termux-elf-cleaner - android-elf-cleaner # outdated?
 #
 # Beware of the TMPDIR=/tmp and :sh 
-cd bootstrap &&  CCACHE_DIR=/data/data/com.termux/files/home/.ccache; export CCHACHE_DIR; ./testbootstrap &&
 
-./bootstrap \
---workdir=/data/data/com.termux/files/home/dev/gnu/pkgsrc/pkgsrc/bootstrap/work \
---cwrappers=no \
---unprivileged \
---prefix=/data/data/com.termux/files/usr/pkg \
---pkgdbdir=/data/data/com.termux/files/usr/pkg/pkgdb \ 
---sysconfdir=/data/data/com.termux/files/usr/pkg/etc \
---varbase=/data/data/com.termux/files/usr/var 
